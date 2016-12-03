@@ -41,7 +41,7 @@ bot.on('/subscribeqoqa', msg => {
   return bot.sendMessage(fromId, "Abo aktiviert");
 });
 
-bot.on('/stopqoqa', msg => {
+bot.on('/unsubscribeqoqa', msg => {
   let fromId = msg.from.id;
   let firstname = msg.from.first_name;
   console.log(" * unregistrating user " + fromId + " User:" + firstname);
