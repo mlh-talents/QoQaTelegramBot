@@ -27,7 +27,7 @@ bot.on('/getqoqa', msg => {
   let fromId = msg.from.id;
   console.log(" => respond /getqoqa to " + fromId);
   // TODO: send correct offer
-  return bot.sendMessage(formId, "Angebot heute: www.qoqa.ch");
+  return bot.sendMessage(fromId, "Angebot heute: www.qoqa.ch");
 });
 
 bot.on('/getdaily', msg => {
