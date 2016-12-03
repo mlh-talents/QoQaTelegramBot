@@ -14,13 +14,13 @@ var telegramTokenReader = require('fs');
 var token = telegramTokenReader.readFileSync('telegram_token.secret').toString().replace(/\n$/, '');
 console.log('Secret Token: [' + token + "]");
 const bot = new TeleBot(token);
+const users = require('./users.js');
 
 bot.on('/start', msg => {
   let fromId = msg.from.id;
   let firstName = msg.from.first_name;
   let reply = msg.message_id;
   console.log(" => respond to " + fromId);
-  var users = require('./users.js');
   users.addUser(fromId);
   return bot.sendMessage(fromId, `Welcome ${ firstName }!`, { reply });
 });
@@ -37,9 +37,7 @@ bot.on('/subscribeqoqa', msg => {
   let fromId = msg.from.id;
   let firstname = msg.from.first_name;
   console.log(" * registrating user " + fromId + " User:" + firstname);
-  var users = require('./users.js');
-  //users.addUser(fromId, 'de');
-  users.setUserAbo(fromId,1);
+  users.setUserAbo(fromId, 1);
   return bot.sendMessage(fromId, "Abo aktiviert");
 });
 
@@ -47,9 +45,22 @@ bot.on('/stopqoqa', msg => {
   let fromId = msg.from.id;
   let firstname = msg.from.first_name;
   console.log(" * unregistrating user " + fromId + " User:" + firstname);
-  var users = require('./users.js');
-  users.removeUser(fromId);
+  users.setUserAbo(fromId, 0);
   return bot.sendMessage(fromId, "Abo deaktiviert");
+});
+
+bot.on('/setgerman', msg => {
+  let fromId = msg.from.id;
+  console.log(" => set language to DE for user " + fromId);
+  user.setUserLanguage(fromId, 'de');
+  return bot.sendMessage(fromId, "Sprache geändert auf Deutsch");
+});
+
+bot.on('/setfrench', msg => {
+  let fromId = msg.from.id;
+  console.log(" => set language to FR for user " + fromId);
+  user.setUserLanguage(fromId, 'fr');
+  return bot.sendMessage(fromId, "Sprache geändert auf Französisch");
 });
 
 bot.on('/help', msg => {
