@@ -19,32 +19,34 @@ const users = require('./users.js');
 bot.on('/start', msg => {
   let fromId = msg.from.id;
   let firstName = msg.from.first_name;
+  let lastName = msg.from.last_name;
+  let username = msg.from.username;
   let reply = msg.message_id;
-  console.log(" => respond to " + fromId);
+  console.log(" => welcome user [" + fromId + "] " + firstName + " " + lastName + " (" + username + ")");
   users.addUser(fromId);
-  return bot.sendMessage(fromId, `Welcome ${ firstName }!`, { reply });
+  return bot.sendMessage(fromId, `Welcome to the QoQa Bot, ${ firstName }!`, { reply });
 });
 
 bot.on('/getqoqa', msg => {
   let fromId = msg.from.id;
-  let firstname = msg.from.first_name;
-  console.log(" => respond /getqoqa to " + fromId + " User:" + firstname);
+  let username = msg.from.username;
+  console.log(" => respond /getqoqa to " + fromId + " User: " + username);
   // TODO: send correct offer
   return bot.sendMessage(fromId, "Angebot heute: www.qoqa.ch");
 });
 
 bot.on('/subscribeqoqa', msg => {
   let fromId = msg.from.id;
-  let firstname = msg.from.first_name;
-  console.log(" * registrating user " + fromId + " User:" + firstname);
+  let username = msg.from.username;
+  console.log(" * registrating user " + fromId + " User: " + username);
   users.setUserAbo(fromId, 1);
   return bot.sendMessage(fromId, "Abo aktiviert");
 });
 
 bot.on('/unsubscribeqoqa', msg => {
   let fromId = msg.from.id;
-  let firstname = msg.from.first_name;
-  console.log(" * unregistrating user " + fromId + " User:" + firstname);
+  let username = msg.from.username;
+  console.log(" * unregistrating user " + fromId + " User: " + username);
   users.setUserAbo(fromId, 0);
   return bot.sendMessage(fromId, "Abo deaktiviert");
 });
@@ -65,8 +67,8 @@ bot.on('/setfrench', msg => {
 
 bot.on('/help', msg => {
   let fromId = msg.from.id;
-  let firstname = msg.from.first_name;
-  console.log(" => send help to " + fromId + " User:" + firstname);
+  let username = msg.from.username;
+  console.log(" => send help to " + fromId + " User: " + username);
   return bot.sendMessage(fromId, "/getqoqa für aktuelles Angebot\n/getdaily sendet jeden Tag das Angebot\n/stopdaily deaktiviert das Abo");
 });
 
