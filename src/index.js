@@ -29,10 +29,12 @@ bot.on('/start', msg => {
 
 bot.on('/getqoqa', msg => {
   let fromId = msg.from.id;
-  let username = msg.from.username;
-  console.log(" => respond /getqoqa to " + fromId + " User: " + username);
-  // TODO: send correct offer
-  return bot.sendMessage(fromId, "Angebot heute: www.qoqa.ch");
+  console.log(" => respond /getqoqa to " + fromId);
+  var webscraper = require("./web_scraper.js");
+  webscraper.scrapeThisShit("de", function(data) {
+    console.log("send image");
+    bot.sendPhoto(fromId, data.image, {caption: data.title});
+  });
 });
 
 bot.on('/subscribeqoqa', msg => {
