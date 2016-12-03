@@ -20,10 +20,10 @@ var users =  {
     console.info("Update User language");
     database.update({_id:userId},{$set:{lang:language}},{},function(err,numReplaced) {
       if (err) {
-        console.error("Failed to set new language from user" + userId);
+        console.error("Failed to set new language of [" + userId + "]");
       }
       else {
-        console.info("Successfully set new language from user" + userId);
+        console.info("Successfully set new language of [" + userId + "]");
       }
     });
   },
@@ -32,10 +32,10 @@ var users =  {
     console.info("Update User Abo to " + abo);
     database.update({_id:userId},{$set:{abo:abo}},{}, function(err,numReplaced) {
       if (err) {
-        console.error("Failed to set new abo from user" + userId);
+        console.error("Failed to set new abo of [" + userId + "]");
       }
       else {
-        console.info("Successfully set new abo from user" + userId);
+        console.info("Successfully set new abo of [" + userId + "]");
       }
     });
   },
@@ -48,7 +48,7 @@ var users =  {
     };
     database.insert(user, function(err, newdoc){
       if (err) {
-        console.error("error while saving user :(");
+        console.error("error while creating user " + userId + ", maybe it already exists...");
       }
       else {
         console.info("user [" + userId + "] saved into db");
