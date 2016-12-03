@@ -15,12 +15,22 @@ var webscrappermodule = {
         var $ = cheerio.load(body);
 
         var title = $("title").text().replace('QoQa.ch | ', '');
-        console.log(title);
+        var qoqaPrice = 'QoQa price: ' + $(".qoqa-price").first().text().replace(/\s/g, '');
+        var normalPrice = 'Normal price: ' + $("div[class=price]").first().text().replace(/\s/g, '');
+        // TODO: fix
+        //var cheapestPrice = 'Cheapest price: ' + $("div[class=price]").next().next().text().replace(/\s/g, '');
+        var link = 'jetzt zuschlagen: qoqa.ch/' + language;
+        var caption = title + '\n'
+                      + qoqaPrice + '\n'
+                      + normalPrice + '\n'
+                      //+ cheapestPrice + '\n'
+                      + link;
+        console.log("DEBUG:::::" + caption);
 
         var src = $('#showcase_media_DESKTOP_0').attr("src");
         console.log(src);
 
-        data = {title:title, image:src};
+        data = {title:caption, image:src};
         callback(data);
     });
     console.log("web_scraper: scraping finished " + data);
