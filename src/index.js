@@ -42,7 +42,7 @@ bot.on('/stopdaily', msg => {
   let fromId = msg.from.id;
   console.log(" * unregistrating user " + fromId);
   var users = require('./users.js');
-  user.removeUser(fromId);
+  users.removeUser(fromId);
   return bot.sendMessage(fromId, "Abo deaktiviert");
 });
 
