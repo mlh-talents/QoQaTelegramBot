@@ -15,8 +15,8 @@ var webscrappermodule = {
         var $ = cheerio.load(body);
 
         var title = $("title").text().replace('QoQa.ch | ', '');
-        var qoqaPrice = 'QoQa price: ' + $(".qoqa-price").first().text().replace(/\s/g, '');
-        var normalPrice = 'Normal price: ' + $("div[class=price]").first().text().replace(/\s/g, '');
+        var qoqaPrice = 'QoQa Preis: ' + $(".qoqa-price").first().text().replace(/\s/g, '');
+        var normalPrice = 'Richtpreis: ' + $("div[class=price]").first().text().replace(/\s/g, '');
         // TODO: fix
         //var cheapestPrice = 'Cheapest price: ' + $("div[class=price]").next().next().text().replace(/\s/g, '');
         var link = 'jetzt zuschlagen: qoqa.ch/' + language;
