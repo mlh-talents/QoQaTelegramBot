@@ -16,6 +16,9 @@ console.log('Secret Token: [' + token + "]");
 const bot = new TeleBot(token);
 const users = require('./users.js');
 
+var keyboard = require("./keyboard.js");
+keyboard.activateKeyboardCommands(bot);
+
 bot.on('/start', msg => {
   let fromId = msg.from.id;
   let firstName = msg.from.first_name;
