@@ -31,7 +31,7 @@ bot.on('/getqoqa', msg => {
   return bot.sendMessage(fromId, "Angebot heute: www.qoqa.ch");
 });
 
-bot.on('/getdaily', msg => {
+bot.on('/subscribeqoqa', msg => {
   let fromId = msg.from.id;
   let firstname = msg.from.first_name;
   console.log(" * registrating user " + fromId + " User:" + firstname);
@@ -40,7 +40,7 @@ bot.on('/getdaily', msg => {
   return bot.sendMessage(fromId, "Abo aktiviert");
 });
 
-bot.on('/stopdaily', msg => {
+bot.on('/stopqoqa', msg => {
   let fromId = msg.from.id;
   let firstname = msg.from.first_name;
   console.log(" * unregistrating user " + fromId + " User:" + firstname);
