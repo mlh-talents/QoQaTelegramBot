@@ -10,12 +10,9 @@ function scrapeThisShit(language = 'de') {
   }, function(error, response, body) {
     var $ = cheerio.load(body);
 
-    $("title").each(function() {
-      var title = $(this);
-      var text = title.text().replace('QoQa.ch | ', '');
-
-      console.log(text);
-    });
+    var text = $("title").text().replace('QoQa.ch | ', '');
+    console.log(text);
+    
     var src = $('#showcase_media_DESKTOP_0').attr("src");
     console.log(src);
   });
