@@ -3,3 +3,5 @@
 /unsubscribeqoqa - Abo deaktivieren
 /setgerman - Sprache Deutsch aktivieren
 /setfrench - Sprache Französisch aktivieren
+/hidekeyboard - Verbirgt Bot spezifische Tastatur
+/showkeyboard - Zeigt Bot spezifische Tastatur
