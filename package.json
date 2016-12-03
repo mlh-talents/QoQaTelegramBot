@@ -1,0 +1,43 @@
+{
+  "name": "QoQaBotTelegramBot",
+  "version": "0.0.0",
+  "description": "QoQa bot project for programming a telegram bot",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mlh-talents/helloWorldTelegramBot.git"
+  },
+  "keywords": [
+    "telegram",
+    "QoQa"
+  ],
+  "author": "MLH-Talents team",
+  "contributors": [
+    {
+      "name": "Jan Bucher",
+      "email": "jan@jan-bucher.ch"
+    },
+    {
+      "name": "Brian Boss",
+      "email": "brianbossdennis@gmail.com"
+    },
+    {
+      "name": "Marco Palkoska",
+      "email": "marco.palkoska@stud.hslu.ch"
+    },
+    {
+      "name": "Yannick Luthiger",
+      "email": "yannick.luthiger@stud.hslu.ch"
+    }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mlh-talents/helloWorldTelegramBot/issues"
+  },
+  "dependencies": {
+    "telebot": "^1.0.6"
+  }
+}
