@@ -66,14 +66,14 @@ bot.on('/unsubscribeqoqa', msg => {
 bot.on('/setgerman', msg => {
   let fromId = msg.from.id;
   console.log(" => set language to DE for user " + fromId);
-  user.setUserLanguage(fromId, 'de');
+  users.setUserLanguage(fromId, 'de');
   return bot.sendMessage(fromId, "Sprache geändert auf Deutsch");
 });
 
 bot.on('/setfrench', msg => {
   let fromId = msg.from.id;
   console.log(" => set language to FR for user " + fromId);
-  user.setUserLanguage(fromId, 'fr');
+  users.setUserLanguage(fromId, 'fr');
   return bot.sendMessage(fromId, "Sprache geändert auf Französisch");
 });
 
