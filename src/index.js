@@ -3,10 +3,6 @@
 console.log("QoQa Telegram Bot Server");
 console.log("########################");
 
-console.log("Init cronjob...");
-var sender = require("./sendStuffToUsers");
-sender.registerCronJob();
-
 const TeleBot = require('telebot');
 var fs = require('fs');
 
@@ -18,6 +14,10 @@ const users = require('./users.js');
 
 var keyboard = require("./keyboard.js");
 keyboard.activateKeyboardCommands(bot);
+
+console.log("Init cronjob...");
+var sender = require("./sendStuffToUsers");
+sender.registerCronJob(bot);
 
 bot.on('/start', msg => {
   let fromId = msg.from.id;
@@ -34,10 +34,17 @@ bot.on('/getqoqa', msg => {
   let fromId = msg.from.id;
   console.log(" => respond /getqoqa to " + fromId);
   var webscraper = require("./web_scraper.js");
-  webscraper.scrapeThisShit("de", function(data) {
-    console.log("send image");
-    bot.sendPhoto(fromId, data.image, {caption: data.title});
-  });
+  users.getUsers().find({_id:fromId},{}, function(err, users) {
+    if (err) {
+      console.error("error while getting user " + fromId);
+    }
+    else {
+      users.forEach(function(user) {
+        console.log("user: " + user);
+        sender.sendToUser(user, bot);
+      });
+    }
+  })
 });
 
 bot.on('/subscribeqoqa', msg => {
