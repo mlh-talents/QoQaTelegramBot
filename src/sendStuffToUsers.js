@@ -2,20 +2,19 @@
 
 var sender = {
   registerCronJob: function(bot) {
-    var self = this;
     var CronJob = require('cron').CronJob;
     // for testing: all minute
-    new CronJob('0 1 * * * *', function() {
+    new CronJob('*/1 * * * *', function() {
     //new CronJob('0 1 0 * * *', function() {
       console.log("time to send the newest stuff to the users!");
-      self.sendMessagesToUsers(bot);
+      sender.sendMessagesToUsers(bot);
     }, null, true, 'America/Los_Angeles');
   },
   sendMessagesToUsers: function(bot) {
     var users = require("./users");
-    users.getUsers().find({},{},function(err, docs) {
+    users.getUsers().find({abo:1},{},function(err, docs) {
       docs.forEach(function(user) {
-        self.sendToUser(user, bot);
+        sender.sendToUser(user, bot);
       })
     });
   },

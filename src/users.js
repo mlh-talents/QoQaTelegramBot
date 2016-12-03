@@ -29,6 +29,7 @@ var users =  {
   },
 
   setUserAbo(userId, abo) {
+    console.info("Update User Abo to " + abo);
     database.update({_id:userId},{$set:{abo:abo}},{}, function(err,numReplaced) {
       if (err) {
         console.error("Failed to set new abo from user" + userId);
