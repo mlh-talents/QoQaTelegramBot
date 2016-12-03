@@ -4,8 +4,8 @@ var sender = {
   registerCronJob: function(bot) {
     var CronJob = require('cron').CronJob;
     // for testing: all minute
-    new CronJob('*/1 * * * *', function() {
-    //new CronJob('0 1 0 * * *', function() {
+    //new CronJob('*/1 * * * *', function() {
+    new CronJob('0 1 0 * * *', function() {
       console.log("++++++++++++++++++\nTime to send the newest stuff to the users!\n++++++++++++++++++");
       sender.sendMessagesToUsers(bot);
     }, null, true, 'America/Los_Angeles');
