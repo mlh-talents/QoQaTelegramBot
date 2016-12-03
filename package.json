@@ -39,6 +39,8 @@
   },
   "dependencies": {
     "cron": "^1.1.1",
+    "cheerio": "^0.22.0",
+    "request": "^2.79.0",
     "telebot": "^1.0.6"
   }
 }
