@@ -25,7 +25,7 @@ var users =  {
         console.error("error while saving user :(");
       }
       else {
-        console.info("user [" + newdoc.id + "] saved into db");
+        console.info("user [" + userId + "] saved into db");
       }
     });
   },
