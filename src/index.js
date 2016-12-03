@@ -20,6 +20,8 @@ bot.on('/start', msg => {
   let firstName = msg.from.first_name;
   let reply = msg.message_id;
   console.log(" => respond to " + fromId);
+  var users = require('./users.js');
+  users.addUser(fromId);
   return bot.sendMessage(fromId, `Welcome ${ firstName }!`, { reply });
 });
 
@@ -36,7 +38,8 @@ bot.on('/subscribeqoqa', msg => {
   let firstname = msg.from.first_name;
   console.log(" * registrating user " + fromId + " User:" + firstname);
   var users = require('./users.js');
-  users.addUser(fromId, 'de');
+  //users.addUser(fromId, 'de');
+  users.setUserAbo(fromId,1);
   return bot.sendMessage(fromId, "Abo aktiviert");
 });
 

@@ -1,2 +1,5 @@
 getqoqa - Heutiges Angebot
-getdaily - Heutiges Angebot
+getdaily - Abo aktivieren
+stopdaily - Abo deaktivieren
+setgerman - Sprache Deutsch aktivieren
+setfrench - Sprache Französisch aktivieren
