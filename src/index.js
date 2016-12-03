@@ -33,6 +33,7 @@ bot.on('/getqoqa', msg => {
 
 bot.on('/getdaily', msg => {
   let fromId = msg.from.id;
+  let firstname = msg.from.first_name;
   console.log(" * registrating user " + fromId + " User:" + firstname);
   var users = require('./users.js');
   users.addUser(fromId, 'de');
@@ -41,6 +42,7 @@ bot.on('/getdaily', msg => {
 
 bot.on('/stopdaily', msg => {
   let fromId = msg.from.id;
+  let firstname = msg.from.first_name;
   console.log(" * unregistrating user " + fromId + " User:" + firstname);
   var users = require('./users.js');
   users.removeUser(fromId);
@@ -49,6 +51,7 @@ bot.on('/stopdaily', msg => {
 
 bot.on('/help', msg => {
   let fromId = msg.from.id;
+  let firstname = msg.from.first_name;
   console.log(" => send help to " + fromId + " User:" + firstname);
   return bot.sendMessage(fromId, "/getqoqa für aktuelles Angebot\n/getdaily sendet jeden Tag das Angebot\n/stopdaily deaktiviert das Abo");
 });
