@@ -17,24 +17,25 @@ var users =  {
   },
   setUserLanguage(userId, language) {
     console.error("Update User language");
-    database.update({_id:userId},{$set:{lang:language}},{},function(err,numReplaced));
-    if (err) {
-      console.error("Failed to set new language from user" + userId);
-    }
-    else {
-      console.info("Successfully set new language from user" + userId);
-    }
+    database.update({_id:userId},{$set:{lang:language}},{},function(err,numReplaced) {
+      if (err) {
+        console.error("Failed to set new language from user" + userId);
+      }
+      else {
+        console.info("Successfully set new language from user" + userId);
+      }
+    });
   },
   setUserAbo(userId, abo) {
-    database.update({_id:userId},{$set:{abo:abo}},{},function(err,numReplaced));
-    if (err) {
-      console.error("Failed to set new abo from user" + userId);
-    }
-    else {
-      console.info("Successfully set new abo from user" + userId);
-    }
-
-  }
+    database.update({_id:userId},{$set:{abo:abo}},{}, function(err,numReplaced) {
+      if (err) {
+        console.error("Failed to set new abo from user" + userId);
+      }
+      else {
+        console.info("Successfully set new abo from user" + userId);
+      }
+    });
+  },
   addUser: function(userId) {
     var user = {
      _id: userId,
