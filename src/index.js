@@ -1,9 +1,11 @@
 'use strict';
-var webscraper = require("./web_scraper.js");
-webscraper.scrapeThisShit("de");
 
 console.log("QoQa Telegram Bot Server");
 console.log("########################");
+
+console.log("Init cronjob...");
+var sender = require("./sendStuffToUsers");
+sender.registerCronJob();
 
 const TeleBot = require('telebot');
 var telegramTokenReader = require('fs');

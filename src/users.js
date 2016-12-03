@@ -1,4 +1,5 @@
 'use strict';
+
 var Datastore = require("nedb");
 var database = new Datastore({filename: 'users.db'});
 database.loadDatabase(function(err) {
@@ -11,12 +12,12 @@ database.loadDatabase(function(err) {
 });
 
 var users =  {
-  getActiveUsers: function() {
-
+  getUsers: function() {
+    return database;
   },
   addUser: function(userId, language) {
     var user = {
-     id: userId,
+     _id: userId,
      lang: language
     };
     database.insert(user, function(err, newdoc){
@@ -26,7 +27,18 @@ var users =  {
       else {
         console.info("user [" + newdoc.id + "] saved into db");
       }
-    }) ;
+    });
+  },
+
+  removeUser: function(userId){
+    database.remove({_id:userId},{},function(err,numRemoved){
+      if (err) {
+        console.error("error while removing user " + userId);
+      }
+      else {
+        console.info("user [" + userId + "] removed from database");
+      }
+    })
   }
 };
 module.exports = users;
