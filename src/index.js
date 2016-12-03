@@ -1,21 +1,21 @@
 'use strict';
 
 console.log("QoQa Telegram Bot Server");
-console.log("########################");
+console.log("########################\n\n");
 
 const TeleBot = require('telebot');
 var fs = require('fs');
 
 // load token from file
 var token = fs.readFileSync('telegram_token.secret').toString().replace(/\n$/, '');
-console.log('Secret Token: [' + token + "]");
+console.log('------ Secret Token: [' + token + "]");
 const bot = new TeleBot(token);
 const users = require('./users.js');
 
 var keyboard = require("./keyboard.js");
 keyboard.activateKeyboardCommands(bot);
 
-console.log("Init cronjob...");
+console.log("------ Start cronjob to regulary notify the users");
 var sender = require("./sendStuffToUsers");
 sender.registerCronJob(bot);
 
@@ -86,3 +86,4 @@ bot.on('/help', msg => {
 });
 
 bot.connect();
+console.log("------ Bot is running...")
