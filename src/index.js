@@ -8,10 +8,10 @@ var sender = require("./sendStuffToUsers");
 sender.registerCronJob();
 
 const TeleBot = require('telebot');
-var telegramTokenReader = require('fs');
+var fs = require('fs');
 
 // load token from file
-var token = telegramTokenReader.readFileSync('telegram_token.secret').toString().replace(/\n$/, '');
+var token = fs.readFileSync('telegram_token.secret').toString().replace(/\n$/, '');
 console.log('Secret Token: [' + token + "]");
 const bot = new TeleBot(token);
 const users = require('./users.js');
@@ -69,7 +69,8 @@ bot.on('/help', msg => {
   let fromId = msg.from.id;
   let username = msg.from.username;
   console.log(" => send help to " + fromId + " User: " + username);
-  return bot.sendMessage(fromId, "/getqoqa für aktuelles Angebot\n/getdaily sendet jeden Tag das Angebot\n/stopdaily deaktiviert das Abo");
+  var helpmessage = "QoQa Bot (unofficial!)\n" + fs.readFileSync('src/botcommands.txt').toString();
+  return bot.sendMessage(fromId, helpmessage);
 });
 
 bot.connect();

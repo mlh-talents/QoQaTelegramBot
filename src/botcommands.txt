@@ -1,5 +1,5 @@
-getqoqa - Heutiges Angebot
-subscribeqoqa - Abo aktivieren
-unsubscribeqoqa - Abo deaktivieren
-setgerman - Sprache Deutsch aktivieren
-setfrench - Sprache Französisch aktivieren
+/getqoqa - Heutiges Angebot
+/subscribeqoqa - Abo aktivieren
+/unsubscribeqoqa - Abo deaktivieren
+/setgerman - Sprache Deutsch aktivieren
+/setfrench - Sprache Französisch aktivieren
