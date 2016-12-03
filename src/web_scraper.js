@@ -19,7 +19,7 @@ var webscrappermodule = {
         var normalPrice = 'Richtpreis: ' + $("div[class=price]").first().text().replace(/\s/g, '');
         // TODO: fix
         //var cheapestPrice = 'Cheapest price: ' + $("div[class=price]").next().next().text().replace(/\s/g, '');
-        var link = 'jetzt zuschlagen: qoqa.ch/' + language;
+        var link = 'Jetzt zuschlagen: qoqa.ch/' + language;
         var caption = title + '\n'
                       + qoqaPrice + '\n'
                       + normalPrice + '\n'

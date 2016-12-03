@@ -4,7 +4,8 @@ console.log("QoQa Telegram Bot Server");
 console.log("########################\n\n");
 
 const TeleBot = require('telebot');
-var fs = require('fs');
+const fs = require('fs');
+const i18n = require('./i18n.js');
 
 // load token from file
 var token = fs.readFileSync('telegram_token.secret').toString().replace(/\n$/, '');
@@ -27,7 +28,10 @@ bot.on('/start', msg => {
   let reply = msg.message_id;
   console.log(" => welcome user [" + fromId + "] " + firstName + " " + lastName + " (" + username + ")");
   users.addUser(fromId);
-  return bot.sendMessage(fromId, `Welcome to the QoQa Bot, ${ firstName }!`, { reply });
+  i18n.getTextForUser(fromId, 'welcome', function(value) {
+    return bot.sendMessage(fromId, value + `${ firstName }!`, { reply });
+  });
+
 });
 
 bot.on('/getqoqa', msg => {
@@ -52,7 +56,9 @@ bot.on('/subscribeqoqa', msg => {
   let username = msg.from.username;
   console.log(" * registrating user " + fromId + " User: " + username);
   users.setUserAbo(fromId, 1);
-  return bot.sendMessage(fromId, "Abo aktiviert");
+  i18n.getTextForUser(fromId, 'subscribeqoqa', function(value) {
+    return bot.sendMessage(fromId, value);
+  });
 });
 
 bot.on('/unsubscribeqoqa', msg => {
@@ -60,7 +66,9 @@ bot.on('/unsubscribeqoqa', msg => {
   let username = msg.from.username;
   console.log(" * unregistrating user " + fromId + " User: " + username);
   users.setUserAbo(fromId, 0);
-  return bot.sendMessage(fromId, "Abo deaktiviert");
+  i18n.getTextForUser(fromId, 'unsubscribeqoqa', function(value) {
+    return bot.sendMessage(fromId, value);
+  });
 });
 
 bot.on('/setgerman', msg => {
@@ -74,7 +82,7 @@ bot.on('/setfrench', msg => {
   let fromId = msg.from.id;
   console.log(" => set language to FR for user " + fromId);
   users.setUserLanguage(fromId, 'fr');
-  return bot.sendMessage(fromId, "Sprache geändert auf Französisch");
+  return bot.sendMessage(fromId, "Langue changé en francais");
 });
 
 bot.on('/help', msg => {
