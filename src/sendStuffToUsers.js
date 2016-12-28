@@ -8,7 +8,7 @@ var sender = {
     new CronJob('0 1 0 * * *', function() {
       console.log("++++++++++++++++++\nTime to send the newest stuff to the users!\n++++++++++++++++++");
       sender.sendMessagesToUsers(bot);
-    }, null, true, 'America/Los_Angeles');
+    }, null, true, 'Europe/Zurich');
   },
   sendMessagesToUsers: function(bot) {
     var users = require("./users");
